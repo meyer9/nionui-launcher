@@ -2,4 +2,8 @@ language: objective-c
 
 osx_image: xcode8.2
 
+prebuild:
+  - brew install qt5
+  - sed -i 's/QTDIR = $(QTDIR_$(QT_VERSION))/QTDIR = \/usr\/local\/opt\/qt5'
+
 script: xcodebuild -project NionUILauncher.xcodeproj -target "Nion UI Launcher" -configuration Release
