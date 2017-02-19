@@ -6,5 +6,5 @@ before_install:
   - brew install qt5 python3
   - sed -i '' 's/QTDIR = $(QTDIR_$(QT_VERSION))/QTDIR = \/usr\/local\/opt\/qt5/g' xcconfig/targetReleaseNionUILauncher.xcconfig
   - sed -i '' 's/PYTHONHOME = $(HOME)\/Developer\/anaconda/PYTHONHOME = \/usr\/local\/opt\/python3\/Frameworks\/Python.framework\/Versions\/3.6/g' xcconfig/targetReleaseNionUILauncher.xcconfig
-
+  - sed -i '' 's/PYTHON_VERSION_NUMBER = 3.5/PYTHON_VERSION_NUMBER = 3.6/g' xcconfig/targetReleaseNionUILauncher.xcconfig
 script: xcodebuild -project NionUILauncher.xcodeproj -target "Nion UI Launcher" -configuration Release
