@@ -36,7 +36,7 @@ CODE_SIGN_IDENTITY = Developer ID Application: Nion, Inc.
 
 LD_RUNPATH_SEARCH_PATHS = $(QTDIR)/lib
 
-APP_LDFLAGS_57 = -framework QtCore -framework QtGui -framework QtWidgets $(PYTHON_LDFLAGS)
+APP_LDFLAGS_57 = -framework QtCore -framework QtGui -g QtWidgets -framework QtDBus -framework Qt $(PYTHON_LDFLAGS)
 
 APP_LDFLAGS = $(APP_LDFLAGS_$(QT_VERSION)) -stdlib=libc++
 
