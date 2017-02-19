@@ -3,7 +3,7 @@ language: objective-c
 osx_image: xcode8.2
 
 env:
-  - PYTHONHOME=/usr/local/opt/python3/Frameworks/Versions/3.6
+  - PYTHONHOME=/usr/local/opt/python3/Frameworks/Python.framework/Versions/3.6
 
 before_install:
   - brew install qt5 python3
