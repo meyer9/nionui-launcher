@@ -12,6 +12,7 @@ script: xcodebuild -project NionUILauncher.xcodeproj -target "Nion UI Launcher" 
 after_success:
   - cd build/Release
   - zip -r NionUILauncher.zip Nion\ UI\ Launcher.app
+  - cd ../..
 
 deploy:
   provider: releases
