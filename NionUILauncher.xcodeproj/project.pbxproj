@@ -92,6 +92,7 @@
 		FD840848160D11F600370586 = {
 			isa = PBXGroup;
 			children = (
+				A1FED4561E5A7526006E1AFF /* fix_deploy.py */,
 				FD840879160D136A00370586 /* Configuration */,
 				FD84088B160D181000370586 /* Headers */,
 				FD84085D160D11F700370586 /* Source */,
@@ -146,7 +147,6 @@
 		FD84085E160D11F700370586 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A1FED4561E5A7526006E1AFF /* fix_deploy.py */,
 				FD840876160D126F00370586 /* NionUILauncher-Info.plist */,
 				FD840877160D126F00370586 /* NionUILauncher-Prefix.pch */,
 				FDFA4FE61621F473002D4129 /* resources.qrc */,
@@ -255,7 +255,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n    \"$QTDIR/bin/macdeployqt\" \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME\"\n    install_name_tool -rpath @loader_path/../../Contents @loader_path/../../Contents/Frameworks \"$TARGET_BUILD_DIR/$EXECUTABLE_PATH\" || true\n    python fix_deploy.py @loader_path/../Frameworks\n    python fix_deploy.py @loader_path/../PlugIns\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n    \"$QTDIR/bin/macdeployqt\" \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME\"\n    install_name_tool -rpath @loader_path/../../Contents @loader_path/../../Contents/Frameworks \"$TARGET_BUILD_DIR/$EXECUTABLE_PATH\" || true\n    \"$PYTHONHOME/bin/python\" fix_deploy.py \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Contents/Frameworks\"\n    echo \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Contents/Frameworks\"\n    \"$PYTHONHOME/bin/python\" fix_deploy.py \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Contents/PlugIns\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
