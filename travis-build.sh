@@ -1,4 +1,4 @@
-if [[ "$TRAVIS_OS_NAME" == "osx" ]]
+if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$BUILD_SELF" == "1" ]]; then
   brew install qt5 python3
   pip3 install numpy
   sed -i '' 's/QTDIR = $(QTDIR_$(QT_VERSION))/QTDIR = \/usr\/local\/opt\/qt5/g' xcconfig/targetReleaseNionUILauncher.xcconfig
@@ -10,9 +10,13 @@ if [[ "$TRAVIS_OS_NAME" == "osx" ]]
   cd ../..
 fi
 
-if [[ "$TRAVIS_OS_NAME" == "linux" ]]
+if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "$BUILD_SELF" == "1" ]]; then
   wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
   bash Miniconda3-latest-Linux-x86_64.sh -b
   ~/miniconda3/bin/conda install numpy
   ./linux_build.sh ~/miniconda3
+fi
+
+if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "$BUILD_SELF" == "0" ]]; then
+  echo "Build windows!"
 fi

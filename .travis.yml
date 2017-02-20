@@ -4,6 +4,10 @@ os:
   - linux
   - osx
 
+env:
+  - BUILD_SELF=1
+  - BUILD_SELF=0
+
 addons:
   apt:
     packages:
