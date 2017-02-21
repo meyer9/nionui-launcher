@@ -7,7 +7,7 @@ if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$BUILD_SELF" == "1" ]]; then
   xcodebuild -project NionUILauncher.xcodeproj -target "Nion UI Launcher" -configuration Release
   cd build/Release
   zip -r NionUILauncher-Mac.zip Nion\ UI\ Launcher.app
-  mkdir ../../release
+  mkdir -p ../../release
   mv NionUILauncher-Mac.zip ../../release
   cd ../..
 fi
@@ -29,7 +29,7 @@ if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "$BUILD_SELF" == "1" ]]; then
   mkdir release
   cd linux/x64
   zip NionUILauncher-Linux.zip *
-  mkdir ../../release
+  mkdir -p ../../release
   cp NionUILauncher-Linux.zip ../../release
   cd ../..
 fi
