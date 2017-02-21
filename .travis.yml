@@ -9,9 +9,10 @@ env:
   - BUILD_SELF=0
 
 addons:
-  apt:sources:
+  apt:
+    sources:
     - ubuntu-toolchain-r-test
-  packages:
+    packages:
     - gcc-5
     - g++-5
     - python3-dev
