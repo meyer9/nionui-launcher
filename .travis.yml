@@ -17,6 +17,7 @@ addons:
     - gcc-5
     - g++-5
     - python3-dev
+    - qt5-default
 
 script: bash travis-build.sh
 
