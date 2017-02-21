@@ -6,7 +6,9 @@ if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$BUILD_SELF" == "1" ]]; then
   sed -i '' 's/PYTHON_VERSION_NUMBER = 3.5/PYTHON_VERION_NUMBER = 3.6/g' xcconfig/targetReleaseNionUILauncher.xcconfig
   xcodebuild -project NionUILauncher.xcodeproj -target "Nion UI Launcher" -configuration Release
   cd build/Release
-  zip -r NionUILauncher.zip Nion\ UI\ Launcher.app
+  zip -r NionUILauncher-Mac.zip Nion\ UI\ Launcher.app
+  mkdir ../../release
+  mv NionUILauncher-Mac.zip ../../release
   cd ../..
 fi
 
@@ -24,6 +26,12 @@ if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "$BUILD_SELF" == "1" ]]; then
   conda install --yes numpy
   conda info -a
   bash linux_build.sh ~/miniconda
+  mkdir release
+  cd linux/x64
+  zip NionUILauncher-Linux.zip *
+  mkdir ../../release
+  cp NionUILauncher-Linux.zip ../../release
+  cd ../..
 fi
 
 if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "$BUILD_SELF" == "0" ]]; then
