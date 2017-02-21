@@ -1,3 +1,4 @@
+sudo: required
 language: c++
 osx_image: xcode8.2
 os:
