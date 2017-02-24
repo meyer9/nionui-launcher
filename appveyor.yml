@@ -18,5 +18,6 @@ deploy:
   artifact: /nionui-launcher-windows64.zip/
   draft: false
   prerelease: false
+  tag: $(appveyor_repo_tag_name)
   on:
     appveyor_repo_tag: true
