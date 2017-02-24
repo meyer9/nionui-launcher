@@ -1,9 +1,4 @@
-if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$BUILD_SELF" == "1" ]]; then
-  brew install qt5 python3
-  pip3 install numpy
-  sed -i '' 's/QTDIR = $(QTDIR_$(QT_VERSION))/QTDIR = \/usr\/local\/opt\/qt5/g' xcconfig/targetReleaseNionUILauncher.xcconfig
-  sed -i '' 's/PYTHONHOME = $(HOME)\/Developer\/anaconda/PYTHONHOME = \/usr\/local\/opt\/python3\/Frameworks\/Python.framework\/Versions\/3.6/g' xcconfig/targetReleaseNionUILauncher.xcconfig
-  sed -i '' 's/PYTHON_VERSION_NUMBER = 3.5/PYTHON_VERION_NUMBER = 3.6/g' xcconfig/targetReleaseNionUILauncher.xcconfig
+if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
   xcodebuild -project NionUILauncher.xcodeproj -target "Nion UI Launcher" -configuration Release
   cd build/Release
   zip -r NionUILauncher-Mac.zip Nion\ UI\ Launcher.app
@@ -12,7 +7,7 @@ if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$BUILD_SELF" == "1" ]]; then
   cd ../..
 fi
 
-if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "$BUILD_SELF" == "1" ]]; then
+if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
   sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty universe"
   sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty main"
   sudo apt-get update
