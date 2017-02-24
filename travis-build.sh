@@ -33,7 +33,3 @@ if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "$BUILD_SELF" == "1" ]]; then
   cp NionUILauncher-Linux.zip ../../release
   cd ../..
 fi
-
-if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "$BUILD_SELF" == "0" ]]; then
-  echo "Build windows!"
-fi

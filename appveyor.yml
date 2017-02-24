@@ -1,0 +1,22 @@
+version: '#{build}'
+platform: x64
+environment:
+  QT_BASE_X64: C:\Qt\5.7\msvc2015_64
+  PYTHON3_BASE_X64: C:\Miniconda35-x64
+install:
+- cmd: C:\Miniconda35-x64\Scripts\conda install numpy -y
+build:
+  project: NionUILauncher.vcxproj
+  verbosity: minimal
+artifacts:
+- path: x64\Debug\
+  name: nionui-launcher-windows64
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: "JOsBeG4/+uADDmapGTFqxFVqxB6MAN6TdJmamNvc4OFw96ifhEaSzOUbVbRcRLI9"
+  artifact: /nionui-launcher-windows64.zip/
+  draft: false
+  prerelease: false
+  on:
+    appveyor_repo_tag: true
